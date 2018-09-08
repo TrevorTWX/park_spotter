@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Home</title>
+    <title>Admin</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,14 +36,12 @@
         <div class="row h-100">
           <div class="col-12 my-auto">
             <div class="masthead-content text-white py-5 py-md-0">
-              <h1 class="mb-3">PCM Parking</h1>
-              <p class="mb-5">As easy as it could be, just click the button below to
-                <strong>Reserve</strong> your parking lot!</p>
-                  <button onclick="getLocation()"  class="btn btn-secondary" type="button">Get Location</button>
-                  <p id="my-location"></p>
-                  <div class="input-group input-group-newsletter">
-                    <div class="input-group-append">
-                    </div>
+              <h1 class="mb-3">Admin</h1>
+              <p class="mb-5">You
+                <strong>Manage</strong> your parking lot here!</p>
+                  <button onclick="resetAvailability()"  class="btn btn-secondary" type="button">Reset</button>
+                  <div class="input-group-append">
+                    <p id="parking-reset"></p>
                   </div>
 <!--               <div class="input-group input-group-newsletter">
                 <input type="email" class="form-control" placeholder="Enter email..." aria-label="Enter email..." aria-describedby="basic-addon">
@@ -76,24 +74,14 @@
         </li>
       </ul>
     </div>
-    <script>
-      var x = document.getElementById("my-location");
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-      }
-      function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude; 
-      }
-      var myLatitude = position.coords.latitude;
-      var myLongitude = position.coords.longitude;
-    </script>
-
     <!-- Bootstrap core JavaScript -->
+    <script>
+      var  x = document.getElementById("parking-reset");
+      function resetAvailability() {
+        x.innerHTML = "Reset success";
+        // reset parking lot availability
+      }
+    </script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
