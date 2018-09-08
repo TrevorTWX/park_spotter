@@ -39,6 +39,18 @@
               <h1 class="mb-3">Admin</h1>
               <p class="mb-5">You
                 <strong>Manage</strong> your parking lot here!</p>
+                  <button onclick="addCar()"  class="btn btn-secondary" type="button">
+                    <span class="glyphicon glyphicon-plus">plus</span>
+                  </button>
+                  <div class="input-group-append">
+                    <p id="parking-add"></p>
+                  </div>
+                  <button onclick="removeCar()"  class="btn btn-secondary" type="button">
+                    <span class="glyphicon glyphicon-remove">remove</span>
+                  </button>
+                  <div class="input-group-append">
+                    <p id="parking-remove"></p>
+                  </div>
                   <button onclick="resetAvailability()"  class="btn btn-secondary" type="button">Reset</button>
                   <div class="input-group-append">
                     <p id="parking-reset"></p>
@@ -76,9 +88,19 @@
     </div>
     <!-- Bootstrap core JavaScript -->
     <script>
-      var  x = document.getElementById("parking-reset");
+      var  reset = document.getElementById("parking-reset");
+      var  add = document.getElementById("parking-add");
+      var  remove = document.getElementById("parking-remove");
       function resetAvailability() {
-        x.innerHTML = "Reset success";
+        reset.innerHTML = "Reset success";
+        // reset parking lot availability
+      }
+      function addCar() {
+        add.innerHTML = "A car enters";
+        // reset parking lot availability
+      }
+      function removeCar() {
+        remove.innerHTML = "A car left";
         // reset parking lot availability
       }
     </script>
