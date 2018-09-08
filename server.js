@@ -9,6 +9,7 @@ var PORT = process.env.PORT || 8080;
 
 app.use(express.static("public"));
 
+require("./routes/htmlRoutes")(app);
 
 //var routes = require("./routes/routes.js");
 
