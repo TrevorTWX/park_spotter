@@ -39,18 +39,15 @@
               <h1 class="mb-3">PCM Parking</h1>
               <p class="mb-5">As easy as it could be, just click the button below to
                 <strong>Reserve</strong> your parking lot!</p>
-                  <button onclick="getLocation()"  class="btn btn-secondary" type="button">Get Location</button>
                   <p id="my-location"></p>
-                  <div class="input-group input-group-newsletter">
-                    <div class="input-group-append">
-                    </div>
-                  </div>
-<!--               <div class="input-group input-group-newsletter">
-                <input type="email" class="form-control" placeholder="Enter email..." aria-label="Enter email..." aria-describedby="basic-addon">
+              <div class="input-group input-group-newsletter">
+                <input type="email" class="form-control" placeholder="Enter License plate number..." aria-label="Enter email..." aria-describedby="basic-addon">
                 <div class="input-group-append">
-                  <button class="btn btn-secondary" type="button">Notify Me!</button>
+                  <button class="btn btn-secondary" type="button" onclick="getLocation()">Get an Entrance!</button>
                 </div>
-              </div> -->
+              </div>
+              <button onclick="checkAvailability()"  class="btn btn-secondary" type="button">Check Availability</button>
+              <p id="check-availability"></p>
             </div>
           </div>
         </div>
@@ -78,6 +75,9 @@
     </div>
     <script>
       var x = document.getElementById("my-location");
+      var entrance = "B"; // replace with real entrance
+      var availability = document.getElementById("check-availability")
+      var remainLots = "999" // replace with actual remainer
       function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
@@ -87,10 +87,13 @@
       }
       function showPosition(position) {
         x.innerHTML = "Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude; 
+        "<br>Longitude: " + position.coords.longitude + "<br>Your Assigned entrance is " + entrance; 
       }
       var myLatitude = position.coords.latitude;
       var myLongitude = position.coords.longitude;
+      function checkAvailability() {
+        availability.innerHTML = remainLots + " parking lots remain";
+      }
     </script>
 
     <!-- Bootstrap core JavaScript -->
