@@ -11,11 +11,17 @@ var PORT = process.env.PORT || 8080;
 
 app.use(express.static("public"));
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 require("./routes/htmlRoutes")(app);
 
-//var routes = require("./routes/routes.js");
+var routes = require("./routes/apiRoutes.js");
 
-//app.use(routes);
+app.use(routes);
 
 db.sequelize.sync().then(function() {
 app.listen(PORT, function() {
