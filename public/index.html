@@ -53,13 +53,8 @@
                 <button onclick="checkAvailability()"  class="btn btn-secondary" type="button">Check Availability</button>
                 <p id="check-availability"></p>
               <br>
+              <button href="#" class="btn btn-secondary" onclick="showMap()">Show Map</button>
               <button id="gmap" class="btn btn-secondary" style="display:none;" onclick="open_navigation()">Start Navigation</button>
-                <button href="#" class="btn btn-secondary" onclick="showMap()">Show Map</button>
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      ...
-                    </div>
                 </div>
               </div>
             </div>
@@ -110,12 +105,13 @@
       function checkAvailability() {
         availability.innerHTML = remainLots + " parking lots remain";
       }
-      function showMap() {
-        map.style = "block"
+      function showMap(){
+        document.getElementById('myMap video_background').style.display = 'block';
       }
       // jump to google maps for navigation
       function addNavigation(){
         document.getElementById('gmap').style.display = 'block';
+        document.getElementById('gmap').style.marginTop = '10%';
       }
       function open_navigation(){
         if (entrance.includes("A")) {
