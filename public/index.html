@@ -26,8 +26,11 @@
   <body>
 
     <div class="overlay"></div>
-    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" id="video_background">
       <source src="mp4/bg.mp4" type="video/mp4">
+    </video>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" id="myMap video_background" style="display: none">
+      <source src="mp4/parking.mp4" type="video/mp4">
     </video>
 
     <div class="masthead">
@@ -50,7 +53,7 @@
                 <button onclick="checkAvailability()"  class="btn btn-secondary" type="button">Check Availability</button>
                 <p id="check-availability"></p>
               <br>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-examp1">Show Floor</button>
+                <button href="#" class="btn btn-secondary" onclick="showMap()">Show Map</button>
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -88,6 +91,8 @@
       var entrance = "B"; // replace with real entrance
       var availability = document.getElementById("check-availability")
       var remainLots = "999" // replace with actual remainer
+      var map = document.getElementById("myMap video_background")
+      console.log(map.style)
       function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
@@ -104,6 +109,11 @@
       function checkAvailability() {
         availability.innerHTML = remainLots + " parking lots remain";
       }
+      function showMap() {
+        map.style = "block"
+      }
+
+
     </script>
 
     <!-- Bootstrap core JavaScript -->
