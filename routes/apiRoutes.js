@@ -79,10 +79,11 @@ router.post("/entrances",function(req,res){
   }});
 });
   
-
-
-router.post("/", function(req,res){
-   
+router.post("/carNumbers", function(req,res){
+    console.log("str");
+    console.log(req.body);
+     //db.Car.create(req.body)
+//   db.
 
 });
 
