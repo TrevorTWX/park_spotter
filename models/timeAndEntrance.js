@@ -4,15 +4,15 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
-      entranceA: {
+      A: {
         type: DataTypes.INTEGER,
         defaultValue: 0
       },
-      entranceB: {
+      B: {
         type: DataTypes.INTEGER,
         defaultValue: 0
       },
-      entranceC: {
+      C: {
         type: DataTypes.INTEGER,
         defaultValue: 0
       }
