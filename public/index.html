@@ -53,6 +53,7 @@
                 <button onclick="checkAvailability()"  class="btn btn-secondary" type="button">Check Availability</button>
                 <p id="check-availability"></p>
               <br>
+              <button id="gmap" class="btn btn-secondary" style="display:none;" onclick="open_navigation()">Start Navigation</button>
                 <button href="#" class="btn btn-secondary" onclick="showMap()">Show Map</button>
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
@@ -101,8 +102,9 @@
         }
       }
       function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude + "<br>Your Assigned entrance is " + entrance; 
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude + "<br>Your Assigned entrance is " + entrance;
+        addNavigation();
       }
       var myLatitude = position.coords.latitude;
       var myLongitude = position.coords.longitude;
@@ -111,6 +113,23 @@
       }
       function showMap() {
         map.style = "block"
+      }
+      // jump to google maps for navigation
+      function addNavigation(){
+        document.getElementById('gmap').style.display = 'block';
+      }
+      function open_navigation(){
+        if (entrance.includes("A")) {
+          var des_loc = "destination=" + "33.866139,-84.483251";
+        }
+        if (entrance.includes("B")) {
+          var des_loc = "destination=" + "33.865453,-84.483324";
+        }
+        if (entrance.includes("C")) {
+          var des_loc = "destination=" + "33.864109,-84.483724";
+        }
+        var map_url = "https://www.google.com/maps/dir/?api=1&" + des_loc;
+        window.open(map_url);
       }
 
 
