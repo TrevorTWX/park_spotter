@@ -32,6 +32,7 @@ video {
   z-index: 0;
 }
 
+
 @media (pointer: coarse) and (hover: none) {
   body {
     background: url("../img/bg-mobile-fallback.jpg") #002E66 no-repeat center center scroll;

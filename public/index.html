@@ -41,12 +41,12 @@
       <div class="row h-100">
         <div class="col-12 my-auto">
           <div class="masthead-content text-white py-5 py-md-0">
-            <h1 class="mb-3">PCM Parking</h1>
+            <h1 class="mb-3">THD Parking</h1>
             <p class="mb-5">As easy as it could be, just click the button below to
-              <strong>Reserve</strong> your parking lot!</p>
+              <strong>Guarantee</strong> your Smooth Way to work!</p>
               <p id="my-location"></p>
             <div class="input-group input-group-newsletter">
-              <input type="email" class="form-control" placeholder="Enter License plate number..." aria-label="Enter email..." aria-describedby="basic-addon">
+              <input type="text" class="form-control" id="license" placeholder="Enter License plate number..." aria-label="Enter email..." aria-describedby="basic-addon">
               <div class="input-group-append">
                 <button class="btn btn-secondary" type="button" onclick="getLocation()">Get an Entrance!</button>
               </div>
@@ -55,7 +55,7 @@
             <button onclick="checkAvailability()" class="btn btn-secondary" type="button">Check Availability</button>
             <p id="check-availability"></p>
             <br>
-            <button href="#" class="btn btn-secondary" onclick="showMap()">Show Map</button>
+            <a href="/map" class="btn btn-secondary" >Show Map</a>
             <br>
             <button id="gmap" class="btn btn-secondary" style="display:none;" onclick="open_navigation()">Start Navigation</button>
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -108,9 +108,14 @@
         "<br>Your Entrance: " + data.entrance; 
         entrance = data.entrance;
       })
-        
-
         addNavigation();
+        var license = $("#license").val();
+        var licenseNum = {
+          plateNumber: license
+        }
+      $.post("/carNumbers",licenseNum).then(function(data){
+
+      })
       }
      
       function checkAvailability() {
