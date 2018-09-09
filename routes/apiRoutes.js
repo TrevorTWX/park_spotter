@@ -8,7 +8,7 @@ var gatePlaned;
 
 router.post("/entrances",function(req,res){
     console.log(req.body);
-    request("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+req.body.origin+"&destinations=33.7880,-84.3207&departure_time=now&key=AIzaSyAKXqkSF_vdJRePOHSiM6gF3AF8TLG5biw", function(error, response, body) {
+    request("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+req.body.origin+"&destinations=33.865420,-84.481570&departure_time=now&key=AIzaSyAKXqkSF_vdJRePOHSiM6gF3AF8TLG5biw", function(error, response, body) {
         if (!error && response.statusCode === 200) {
           var duration = JSON.parse(body).rows[0].elements[0].duration_in_traffic.value;
           console.log(duration);

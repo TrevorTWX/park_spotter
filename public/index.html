@@ -44,7 +44,7 @@
             <h1 class="mb-3">PCM Parking</h1>
             <p class="mb-5">As easy as it could be, just click the button below to
               <strong>Reserve</strong> your parking lot!</p>
-            <p id="my-location"></p>
+              <p id="my-location"></p>
             <div class="input-group input-group-newsletter">
               <input type="email" class="form-control" placeholder="Enter License plate number..." aria-label="Enter email..." aria-describedby="basic-addon">
               <div class="input-group-append">
@@ -56,6 +56,8 @@
             <p id="check-availability"></p>
             <br>
             <button href="#" class="btn btn-secondary" onclick="showMap()">Show Map</button>
+            <br>
+            <button id="gmap" class="btn btn-secondary" style="display:none;" onclick="open_navigation()">Start Navigation</button>
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -69,50 +71,43 @@
     </div>
   </div>
 
-  <div class="social-icons">
-    <ul class="list-unstyled text-center mb-0">
-      <li class="list-unstyled-item">
-        <a href="https://github.com/TrevorTWX/code_athlon_2018">
-          <i class="fa fa-github"></i>
-        </a>
-      </li>
-      <li class="list-unstyled-item">
-        <a href="#">
-          <i class="fa fa-facebook"></i>
-        </a>
-      </li>
-      <li class="list-unstyled-item">
-        <a href="#">
-          <i class="fa fa-instagram"></i>
-        </a>
-      </li>
-    </ul>
-  </div>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script>
-    var x = document.getElementById("my-location");
-    var availability = document.getElementById("check-availability")
-    var remainLots = "999" // replace with actual remainer
-    var map = document.getElementById("myMap video_background")
-
-
-    var depatureUnix;
-    var arrivalUnix;
-    //console.log(map.style)
-
-
-    //Function definitions
-    function getLocation() {
-      if (navigator.geolocation) {
-        return navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+    <div class="social-icons">
+      <ul class="list-unstyled text-center mb-0">
+        <li class="list-unstyled-item">
+          <a href="https://github.com/TrevorTWX/code_athlon_2018">
+            <i class="fa fa-github"></i>
+          </a>
+        </li>
+        <li class="list-unstyled-item">
+          <a href="#">
+            <i class="fa fa-facebook"></i>
+          </a>
+        </li>
+        <li class="list-unstyled-item">
+          <a href="#">
+            <i class="fa fa-instagram"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      var x = document.getElementById("my-location");
+      var availability = document.getElementById("check-availability")
+      var entrance;
+      var remainLots = "999" // replace with actual remainer
+      var map = document.getElementById("myMap video_background")
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
       }
-    }
-
-    function showPosition(position) {
-      var origin = {
+      function showPosition(position) {
+       
+       var origin = {
         origin: position.coords.latitude + "," + position.coords.longitude
       };
       console.log(origin);
@@ -121,21 +116,41 @@
         console.log(data);
         x.innerHTML = data.duration + " ("+data.distance+")"+
         "<br>Your Entrance: " + data.entrance; 
-        
+        entrance = data.entrance;
       })
+        
 
-      //x.innerHTML = "Latitude: " + position.coords.latitude + 
-      //"<br>Longitude: " + position.coords.longitude + "<br>Your Assigned entrance is " + entrance; 
-    }
+        addNavigation();
+      }
+     
+      function checkAvailability() {
+        availability.innerHTML = remainLots + " parking lots remain";
+      }
+      function showMap(){
+        document.getElementById('myMap video_background').style.display = 'block';
+      }
+      // jump to google maps for navigation
+      function addNavigation(){
+        document.getElementById('gmap').style.display = 'block';
+        document.getElementById('gmap').style.marginTop = '10%';
+      }
+      function open_navigation(){
+        if (entrance.includes("A")) {
+          var des_loc = "destination=" + "33.866139,-84.483251";
+        }
+        if (entrance.includes("B")) {
+          var des_loc = "destination=" + "33.865453,-84.483324";
+        }
+        if (entrance.includes("C")) {
+          var des_loc = "destination=" + "33.864109,-84.483724";
+        }
+        var map_url = "https://www.google.com/maps/dir/?api=1&" + des_loc;
+        window.open(map_url);
 
+      }
+    
 
-    function checkAvailability() {
-      availability.innerHTML = remainLots + " parking lots remain";
-    }
-
-    function showMap() {
-      map.style = "block"
-    }
+    
 
 
 
