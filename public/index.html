@@ -29,9 +29,9 @@
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" id="video_background">
       <source src="mp4/bg.mp4" type="video/mp4">
     </video>
-    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" id="myMap video_background" style="display: none">
+<!--     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" id="myMap video_background" style="display: none">
       <source src="mp4/parking.mp4" type="video/mp4">
-    </video>
+    </video> -->
 
     <div class="masthead">
       <div class="masthead-bg"></div>
@@ -53,7 +53,19 @@
                 <button onclick="checkAvailability()"  class="btn btn-secondary" type="button">Check Availability</button>
                 <p id="check-availability"></p>
               <br>
-              <button href="#" class="btn btn-secondary" onclick="showMap()">Show Map</button>
+              <!-- <button href="#" class="btn btn-secondary" onclick="showMap()">Show Floor Plan</button> -->
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Check Avaiability For
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/map.html">Floor 1</a>
+                  <a class="dropdown-item" href="/map.html">Floor 2</a>
+                  <a class="dropdown-item" href="/map.html">Floor 3</a>
+                  <a class="dropdown-item" href="/map.html">Floor 4</a>
+                  <a class="dropdown-item" href="/map.html">Floor 5</a>
+                </div>
+              </div>
               <button id="gmap" class="btn btn-secondary" style="display:none;" onclick="open_navigation()">Start Navigation</button>
                 </div>
               </div>
@@ -95,9 +107,9 @@
       function checkAvailability() {
         availability.innerHTML = remainLots + " parking lots remain";
       }
-      function showMap(){
-        document.getElementById('myMap video_background').style.display = 'block';
-      }
+      // function showMap(){
+      //   document.getElementById('myMap video_background').style.display = 'block';
+      // }
       // jump to google maps for navigation
       function addNavigation(){
         document.getElementById('gmap').style.display = 'block';
